@@ -1,0 +1,26 @@
+{
+  "name": "seq",
+  "version": "1.0.0",
+  "description": "A global sequence provider.",
+  "main": "index.js",
+  "scripts": {
+    "dev-redis": "./scripts/dev-redis.sh",
+    "dev": "npm run dev-redis && nodemon -w index.js -w src/ -e js,ejs index.js"
+  },
+  "keywords": [
+    "counter",
+    "sequence",
+    "express"
+  ],
+  "author": "Denny Christochowitz <denny.christochowitz@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^2.5.6",
+    "express": "^4.15.3",
+    "redis": "^2.7.1",
+    "shortid": "^2.2.8"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  }
+}
