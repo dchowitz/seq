@@ -19,7 +19,7 @@ router.post('/new', (req, res) => {
 router.get('/id/:id', async (req, res) => {
   const id = req.params.id;
   if (!id || !shortid.isValid(id)) {
-    res.redirect('/');
+    return res.redirect('/');
   }
 
   const seq = await increment(id);

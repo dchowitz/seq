@@ -19,8 +19,6 @@ Note: The Redis store is not persistent between `npm run dev` calls.
 
 # Features
 
-(Maybe better transfer to github issues...)
-
 ## Homepage
 
 - Show some general statistics like the number of sequences, requests per day or mean requests per sequence.
@@ -43,6 +41,20 @@ Note: The Redis store is not persistent between `npm run dev` calls.
 
 - Make sequence URLs easy to copy.
 
-- Nicer UI.
+- Nicer UI (be more specific about that...)
 
 - HTTP API
+
+# TODOs
+
+(transfer open points / features to github issues)
+
+- README: explain e2e testing with selenium and redis running in docker containers
+- README: explain npm dev target with redis running in docker container
+- prettier
+- standard code style?
+- eslint
+- production docker image
+- test redis with persistent storage
+- handle 404s
+- e2e target doesn't stop redis/selenium (post scripts) in case of test failures

@@ -1,5 +1,4 @@
-const redis = require('./redisPromisified');
-const client = redis.createClient();
+const client = require('./redisClient');
 
 module.exports = async function increment(id) {
   const now = Date.now();

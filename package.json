@@ -4,8 +4,17 @@
   "description": "A global sequence provider.",
   "main": "index.js",
   "scripts": {
-    "dev-redis": "./scripts/dev-redis.sh",
-    "dev": "npm run dev-redis && nodemon -w index.js -w src/ -e js,ejs index.js"
+    "redis": "./scripts/redis.sh",
+    "redis-stop": "./scripts/redis.sh stop",
+    "selenium": "./scripts/selenium.sh",
+    "selenium-stop": "./scripts/selenium.sh stop",
+
+    "predev": "npm run redis",
+    "dev": "nodemon -w index.js -w src/ -e js,ejs index.js && npm run redis-stop",
+
+    "pree2e": "npm run selenium && npm run redis",
+    "e2e": "ava --verbose --serial e2e/*.tests.js",
+    "poste2e": "npm run selenium-stop && npm run redis-stop"
   },
   "keywords": [
     "counter",
@@ -18,9 +27,13 @@
     "ejs": "^2.5.6",
     "express": "^4.15.3",
     "redis": "^2.7.1",
+    "redis-commands": "^1.3.1",
     "shortid": "^2.2.8"
   },
   "devDependencies": {
-    "nodemon": "^1.11.0"
+    "ava": "^0.21.0",
+    "ip": "^1.1.5",
+    "nodemon": "^1.11.0",
+    "selenium-webdriver": "^3.4.0"
   }
 }
