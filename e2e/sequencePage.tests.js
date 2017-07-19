@@ -1,6 +1,6 @@
 const test = require('ava').default;
 const shortid = require('shortid');
-const { homePage, sequencePage, driver, until, url } = require('./harness.js');
+const { homePage, sequencePage, errorPage, driver, until, url } = require('./harness.js');
 
 test('opens when clicking "Create Sequence" in homepage', async t => {
   await homePage.browse();
@@ -31,7 +31,8 @@ test('increments sequence counter on reload', async t => {
   t.is(await sequencePage.getCounter(), '5', 'counter is 5 after 4 reloads');
 });
 
-test('invalid sequence id causes redirect to homepage', async t => {
+test('invalid sequence id causes 500', async t => {
   await sequencePage.browse('xyz'); // to short
-  t.true(await driver.wait(until.urlIs(url), 2000));
+  t.is(await errorPage.getStatusCode(), '500', 'status code is 500');
+  t.is(await errorPage.getMessage(), 'invalid id "xyz"', 'error message says id is invalid');
 });

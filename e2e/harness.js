@@ -49,6 +49,17 @@ exports.sequencePage = {
   }
 };
 
+exports.errorPage = {
+  async getStatusCode() {
+    const status = await driver.wait(until.elementLocated(By.id('error-status')), timeout);
+    return await status.getText();
+  },
+  async getMessage() {
+    const message = await driver.wait(until.elementLocated(By.id('error-message')), timeout);
+    return await message.getText();
+  }
+}
+
 test.before.cb('start app', t => {
   app.listen(8080, t.end);
 });
