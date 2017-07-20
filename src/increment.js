@@ -1,14 +1,14 @@
-const client = require('./redisClient');
+const client = require('./redisClient')
 
-module.exports = async function increment(id) {
-  const now = Date.now();
-  const [ counter, _setCreated, created ] = await client
+module.exports = async function increment (id) {
+  const now = Date.now()
+  const [counter, , created] = await client
     .multi()
     .incr(`counter:${id}`)
     .hsetnx('created', id, now)
     .hset('touched', id, now)
     .hget('created', id)
-    .execAsync();
+    .execAsync()
 
-  return { id, counter, created };
-};
+  return { id, counter, created }
+}

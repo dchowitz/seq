@@ -8,19 +8,16 @@
     "redis-stop": "./scripts/redis.sh stop",
     "selenium": "./scripts/selenium.sh",
     "selenium-stop": "./scripts/selenium.sh stop",
-
     "predev": "npm run redis",
     "dev": "nodemon -w index.js -w src/ -e js,ejs index.js && npm run redis-stop",
-
     "pree2e": "npm run selenium && npm run redis",
     "e2e": "ava --verbose --serial e2e/*.tests.js",
-    "poste2e": "npm run selenium-stop && npm run redis-stop"
+    "poste2e": "npm run selenium-stop && npm run redis-stop",
+    "eslint": "eslint index.js src",
+    "precommit": "npm run eslint",
+    "prepush": "npm run eslint"
   },
-  "keywords": [
-    "counter",
-    "sequence",
-    "express"
-  ],
+  "keywords": ["counter", "sequence", "express"],
   "author": "Denny Christochowitz <denny.christochowitz@gmail.com>",
   "license": "ISC",
   "dependencies": {
@@ -32,8 +29,16 @@
   },
   "devDependencies": {
     "ava": "^0.21.0",
+    "eslint": "^4.2.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-node": "^5.1.1",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "husky": "^0.14.3",
     "ip": "^1.1.5",
     "nodemon": "^1.11.0",
+    "prettier-eslint": "^6.4.2",
     "selenium-webdriver": "^3.4.0"
   }
 }

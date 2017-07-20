@@ -43,9 +43,6 @@ npm run e2e
 
 - README: explain e2e testing with selenium and redis running in docker containers
 - README: explain npm dev target with redis running in docker container
-- prettier
-- standard code style?
-- eslint
 - production docker image
 - test redis with persistent storage
 - e2e target doesn't stop redis/selenium (post scripts) in case of test failures
