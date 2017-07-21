@@ -5,10 +5,11 @@
   "main": "index.js",
   "scripts": {
     "redis": "./scripts/redis.sh",
+    "redis-persist": "./scripts/redis.sh persist",
     "redis-stop": "./scripts/redis.sh stop",
     "selenium": "./scripts/selenium.sh",
     "selenium-stop": "./scripts/selenium.sh stop",
-    "predev": "npm run redis",
+    "predev": "npm run redis-persist",
     "dev": "nodemon -w index.js -w src/ -e js,ejs index.js && npm run redis-stop",
     "pree2e": "npm run selenium && npm run redis",
     "e2e": "ava --verbose --serial e2e/*.tests.js",
